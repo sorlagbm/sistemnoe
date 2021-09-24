@@ -3,7 +3,6 @@ section .data
 a db 10
 b db 27
 c db 0
-; дописать еще хуйню какую то ))
 
 ;1.2
 sum db 0
@@ -42,16 +41,27 @@ mov eax, a
 mov ebx, b
 imul eax, ebx
 mov [pro], eax
-mul eax, ebx
+;mul eax, ebx
 
 ;1.7
 mov eax, a
 mov ebx, b
 div ebx, eax
 mov [del], ebx
+mov [md], ah
 
 ;1.8
+mov eax, [del]
+bts eax, 7
+bts eax, 6
+not eax
+btr eax, 5
+btr eax, 6
+btr eax, 7
 
+;1.9
+mov ebx, eax
+xor ebx, eax 
 
 
 
