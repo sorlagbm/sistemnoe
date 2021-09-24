@@ -7,8 +7,7 @@ section .data
 ;1.2
     sum db 0
     def db 0
-    pro1 db 1
-    pro2 db 1
+    pro db 1
     md db 2
     del db 3
 
@@ -41,9 +40,8 @@ _start:
     mov eax, a
     mov ebx, b
     mul ebx
-    mov [pro1], eax
+    mov [pro], eax
     imul ebx
-    mov [pro2], eax
     
 ;1.7
     mov eax, a
