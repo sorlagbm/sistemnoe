@@ -1,64 +1,52 @@
 section .data
-; 1.1 
-    a db 10
-    b db 27
-    c db 0
-
-;1.2
-    sum db 0
-    def db 0
-    pro db 1
-    md db 2
-    del db 3
-
+a: db 27
+b: db 10
+c: db 0
+sum: db 0
+def: db 0
+imp: dw 1
+mod: db 5
+del: db 15
 section .text
-    global _start
+global _start
 _start:
-
 ;1.3
-    mov eax, a
-    mov ebx, b
-    add eax, ebx
-    mov [sum], eax
-
-
+mov eax, 0
+mov al, [a]
+add al, [b]
+mov [sum], eax
 ;1.4
-    mov eax, a
-    mov ebx, b
-    sub eax, ebx
-    mov [def], eax
-
+mov eax, 0
+mov ax, [a]
+sub ax, [b]
+mov [def], ax
 ;1.5
-    mov eax, a
-    mov ebx, b
-    neg ebx
-    mov [b], ebx
-    sub eax, ebx
-    mov [def], eax
-    
+mov eax, 0
+mov ebx, 0
+
+mov ax, [a]
+mov bx, [b]
+neg bx
+sub ax, bx
+mov [def], ax
 ;1.6
-    mov eax, a
-    mov ebx, b
-    mul ebx
-    mov [pro], eax
-    imul ebx
-    
+mov eax, 0
+mov al, [b]
+neg al
+imul byte[a]
+mov [imp], ax
 ;1.7
-    mov eax, a
-    mov ebx, b
-    div ebx
-    mov [del], eax
-    mov [md], edx
-
+mov eax, 0
+mov ax, [b]
+div byte[a]
+mov [mod], ah
+mov [del], al
 ;1.8
-    mov eax, [del]
-    bts eax, 7
-    bts eax, 6
-    not eax
-    btr eax, 5
-    btr eax, 6
-    btr eax, 7
-
+mov al, [del]
+or al, 10001110b
+and al, 01101010b
 ;1.9
-    mov ebx, eax
-    xor ebx, eax 
+mov bl, al
+xor al, bl
+xor eax, eax
+ret
