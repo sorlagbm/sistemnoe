@@ -29,13 +29,13 @@ CMAIN:
         
     continue:
         mov [nod], eax
-        mov cx,8      ;Инициализация счётчика цикла
+        mov cx,8
         lp:
-            rol al,1      ;Цилический сдвиг AL на 1 бит влево
-            jnc bit0      ;Переход, если CF=0
-            inc bl        ;Инкремент счетчика единичных битов
+            rol al,1   
+            jnc bit0      
+            inc bl        
         bit0:
-            loop lp       ;Команда цикла
+            loop lp       
             mov dl ,bl
     xor eax, eax
     ret
